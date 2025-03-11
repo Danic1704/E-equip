@@ -1,0 +1,1433 @@
+
+:root {
+    --green: var(--green);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: none;
+    transition: 0.2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+}
+
+header {
+    position: sticky;
+    width: 100%;
+    height: 95px;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+    background-color: #2b2020;
+    box-shadow: 0 4px 8px rgba(15, 62, 88, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo video {
+    height: 100%;
+    max-height: 70px;
+    width: auto;
+    border-radius: 5px;
+    border: 2px solid #fb7100;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+}
+
+/* Style pour le conteneur de la navigation */
+.navmenu {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.navmenu a {
+    color: #ffffff;
+    font-size: 1.6rem;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all 0.42s ease;
+}
+.navmenu a:hover {
+    color: #e16500;
+}
+/* Style pour le conteneur de la navigation */
+.nav-item {
+    position: relative;
+    display: flex;
+}
+
+.nav-item a {
+    color: #ffffff;
+    font-size: 1.6rem;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all 0.42s ease;
+}
+
+.nav-item a:hover {
+    color: #e16500;
+}
+
+/* Style pour le menu déroulant */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2b2020;
+    box-shadow: 0 4px 8px rgba(15, 62, 88, 0.1);
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown li {
+    border-bottom: 1px solid #444;
+}
+
+.dropdown li a {
+    display: block;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1.6rem;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown li a:hover {
+    background-color: #e16500;
+    color: #ffffff;
+}
+
+/* Afficher le menu déroulant au survol */
+.nav-item:hover .dropdown {
+    display: block;
+}
+
+
+.nav-icons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-icons i {
+    margin-right: 20px;
+    color: #88ae14;
+    font-size: 2.5rem;
+    transition: all 0.42s ease;
+}
+
+.nav-icons i:hover {
+    color: #e16500;
+}
+
+header #menu-toggle {
+    display: none;
+    padding: 20px;
+}
+
+header .bx-menu {
+    font-size: 3rem;
+    color: #88ae14;
+    border-radius: 10px;
+    padding: 5px 1.5px;
+    cursor: pointer;
+    border: 1px solid rgb(33, 146, 166);
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header .bx-menu {
+        display: block;
+    }
+
+    .navmenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #2b2020; /* Correction de la couleur de fond du menu */
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-100%);
+        transition: all 0.3s ease;
+    }
+
+    .navmenu a {
+        color: #ffffff; /* Assure que le texte du menu est visible sur le fond sombre */
+        margin: 1rem;
+    }
+
+    .navmenu a:hover {
+        color: #e16500; /* Couleur de survol cohérente avec le thème global */
+    }
+
+    #menu-toggle:checked ~ .container .navmenu {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 991px) {
+    html {
+        font-size: 55%;
+    }
+
+    header {
+        padding: 2rem;
+    }
+
+    section {
+        padding: 2rem;
+    }
+
+    .main-home {
+        background-position: left;
+    }
+}
+
+/* Styles généraux comme précédemment */
+
+/* Styles généraux comme précédemment */
+
+main {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 95px); /* Hauteur de la fenêtre du navigateur moins la hauteur du header */
+    padding-top: 95px; /* Pour compenser la hauteur du header */
+}
+
+.welcome-section {
+    position: relative;
+    width: 100%;
+    border-radius: 10px; 
+    height: 430px; /* Hauteur souhaitée */
+    background: url('images/images (1).jpg') no-repeat center center; /* Assurez-vous que le chemin est correct */
+    background-size: cover; /* Couvre toute la surface */
+    margin-top: -90px; /* Réduit la marge supérieure pour positionner la section un peu plus haut */
+    overflow: hidden; /* Assure que les éléments animés ne débordent pas */
+}
+
+.welcome-content {
+    position: absolute;
+    top: 50%; /* Centrer verticalement */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrer horizontalement et verticalement */
+    width: 100%; /* Ajustez la largeur si nécessaire */
+    /*max-width: 600px; Limitez la largeur maximale */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    padding: 30px; /* Augmentez le padding pour plus d'espace */
+    border-radius: 10px; /* Coins arrondis */
+    box-sizing: border-box;
+    color: #fff;
+    height: 430px;
+    opacity: 0; /* Commence invisible pour l'animation */
+    transform: translate(-50%, -60%); /* Position initiale pour l'animation */
+    animation: fadeInUp 1s forwards; /* Animation de l'apparition et du mouvement */
+}
+
+.welcome-content h1 {
+    font-size: 3rem; /* Augmentez la taille de la police pour le titre */
+    margin-bottom: 20px;
+    margin-top: 50px;
+    text-transform: none; /* Désactive la transformation du texte en majuscule */
+    opacity: 0; /* Commence invisible pour l'animation */
+    animation: fadeIn 1s ease-in 0.5s forwards; /* Animation du texte */
+}
+
+.welcome-content p {
+    font-size: 1.9rem; /* Augmentez la taille de la police pour le texte */
+    margin-bottom: 20px; /* Ajoutez un espace entre le texte et le bouton */
+    text-transform: none; /* Désactive la transformation du texte en majuscule */
+    opacity: 0; /* Commence invisible pour l'animation */
+    animation: fadeIn 1s ease-in 1s forwards; /* Animation du texte */
+}
+
+.welcome-content .btn {
+    background-color: #e16500; /* Couleur du bouton */
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px; /* Coins arrondis */
+    text-decoration: none; /* Supprime la décoration du texte */
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Effet de transition pour le bouton */
+    opacity: 0; /* Commence invisible pour l'animation */
+    animation: fadeIn 1s ease-in 1.5s forwards; /* Animation du bouton */
+}
+
+.welcome-content .btn:hover {
+    background-color: #d15400; /* Couleur du bouton au survol */
+    transform: translateY(-5px); /* Déplace le bouton vers le haut au survol */
+}
+
+/* Animation pour la section de bienvenue */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Animation pour les éléments de texte */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Déplace le texte vers le bas */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Position finale */
+    }
+}
+
+.icon-container{
+    background: #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    /*padding-top:5rem;
+    padding-bottom:5rem ; */
+    border-radius: 25px; 
+    justify-content: space-between;
+    margin-top: -70px;
+   }
+   .icon-container .icon{
+    background: #fff;
+    border: 1rem solid rgb(0,0,0,.1);
+    padding:3px;
+    display: flex;
+    align-items: center;
+    flex: 1 px ;
+    border-radius: 10px;
+   }
+   .icon-container .icon img{
+       height: 5rem;
+       margin-right: 2rem;
+   }
+   .icon-container .icon h3{
+       color: #333;
+       padding-bottom: 2px;
+       font-size: 1.5rem;
+       text-transform: none;
+   }
+   .icon-container .icon span{
+       color: #555;
+       font-size: 10px; 
+       text-transform: none;
+   }
+
+   footer {
+    background-color: #222;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    text-transform: none;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin: 20px;
+    text-align: left;
+}
+
+.logo-section {
+    text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #e16500;
+    text-decoration: underline;
+}
+
+.footer-section video {
+    max-width: 120px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 2px solid #e16500;
+}
+
+.footer-section p {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.footer-section input[type="email"] {
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.footer-section button {
+    background-color: #e16500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    transition: background-color 0.3s ease;
+}
+
+.footer-section button:hover {
+    background-color: #d15400;
+}
+
+.footer-bottom {
+    width: 100%;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons .social-icon {
+    margin: 0 10px;
+    font-size: 2.4rem;
+    color: #e16500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons .social-icon:hover {
+    color: #d15400;
+    transform: translateY(-3px);
+}
+
+.footer-bottom p {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-section ul li a {
+        font-size: 1.6rem;
+    }
+
+    .footer-section p,
+    .footer-section input[type="email"],
+    .footer-section button {
+        font-size: 1.6rem;
+    }
+    @media (max-width:450px){
+        html{
+            font-size: 50%;  
+        }
+        .rubrique{
+            font-size: 3rem;
+        }
+    }
+}
+.form-page {
+    background-color: #c2c2d9; /* Exemple de couleur bleu nuit */
+    min-height: 100vh; /* S'assure que l'arrière-plan couvre toute la hauteur de la fenêtre */
+    padding: 0;
+    margin: 0;
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: center; /* Centre horizontalement le contenu */
+}
+
+.form-container {
+    max-width: 400px;
+    margin: auto; /* Ajustez cette valeur pour rapprocher le formulaire du nav */
+    padding: 20px;
+    background-color: #2b2020; /* Couleur de fond assortie à votre header */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff; /* Texte blanc pour contraster avec le fond sombre */
+    
+}
+
+.form-container h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.form-container label {
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #e16500; /* Assortir la couleur du texte aux accents du site */
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.6rem;
+}
+
+.form-container .btn {
+    background-color: #e16500; /* Couleur de fond des boutons */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.form-container .btn:hover {
+    background-color: #d15400; /* Couleur de fond des boutons au survol */
+}
+
+.form-container p {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 20px;
+}
+
+.form-container p a {
+    color: #e16500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-container p a:hover {
+    color: #d15400;
+}
+
+.categories-section {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.categories-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-card {
+    width: 200px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.category-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.category-card h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #222;
+}
+.categories-section h2{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.rubrique{
+    padding-left: 30px;
+    margin: 10px 0;
+    font-size: 30px;
+    color: #222;
+    text-transform: none;
+}
+.a-propos .row{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    padding-bottom: 3rem;
+}
+.a-propos .row .image-container{
+    flex: 1 1 40rem;
+    position: relative;
+}
+.a-propos .row .image-container img{
+   width: 100%;
+   border:1.5px solid #fff; 
+   border-radius: 5rem;
+   box-shadow: 0 .5rem 1rem rgb(0,0,0,1);
+   height: 100%;
+   object-fit: cover;
+}
+
+.a-propos .row .image-container h3{
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   font-size: 25px;
+   background: transparent;
+   backdrop-filter: blur(8px);
+   width:100%;
+   padding:1rem 2rem ;
+   text-align: center;
+   color: bisque;
+}
+
+.a-propos .row .content{
+    flex: 1 1 40rem;
+    margin-top: 20px;
+    flex-direction: column;
+}
+.a-propos .row .content h3{
+    font-size: 3rem;
+    color:rgb(83, 46, 9);
+    text-transform: none;
+}
+.a-propos .row .content p{
+    font-size: 1.55rem; /* Taille de police agréable à lire */
+    color: #555; /* Couleur du texte */
+    background: #fff; /* Fond blanc pour contraster avec la page */
+    padding: 7px; /* Ajoute du padding pour une meilleure lisibilité */
+    font-family: 'Georgia', serif; /* Police élégante */
+    line-height: 1.5; /* Hauteur de ligne pour améliorer la lisibilité */
+    margin: 5px 0; /* Ajoute une marge pour séparer les paragraphes */
+}
+.main-btn{
+    display: inline-block;
+    color: rgb(55, 55, 177);
+    font-size: 12px;
+    font-weight: 100;
+   text-transform:none ;
+   border: 2px solid rgb(30, 49, 87);
+   border-radius: 70px;
+   padding: 12px 25px;
+   transition: all .42s ease;
+   margin-bottom: 90px;
+}
+.main-btn:hover{
+    background-color: rgb(158, 69, 14);
+    color: beige;
+}
+/*Produits*/
+.product-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.product-list h2 {
+    padding-left: 20px;
+    margin: 10px 0;
+    font-size: 30px;
+    color: #222;
+    text-transform: none;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-item {
+    position: relative;
+    width: 250px; /* Ajustez la largeur selon vos besoins */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.product-item img {
+    width: 100%;
+    height: 300px; /* Ajustez la hauteur selon vos besoins */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover img {
+    transform: scale(1.05); /* Zoom léger sur l'image au survol */
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-info h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.discount {
+    background-color: #e65c5c;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 1rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-item:hover .discount {
+    background-color: #d44f4f; /* Couleur de fond légèrement plus foncée au survol */
+}
+
+.product-icons {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: none;
+    gap: 10px;
+   text-align: center;
+}
+
+.product-item:hover .product-icons {
+    display: flex; /* Affiche les icônes au survol */
+}
+
+.product-icons i {
+    font-size: 1.5rem;
+    color: #333;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer; /* Curseur de type pointer pour les icônes */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Animation de changement de couleur */
+}
+
+.product-icons i:hover {
+    color: #fff; /* Couleur de l'icône au survol */
+    background-color: #d15400; /* Couleur de fond de l'icône au survol */
+}
+.product-info {
+    margin-top: 10px; /* Ajoute un petit espace entre la carte et le texte */
+    font-size: 1.9rem;
+    color: #666;
+    text-align: center;
+    margin-left: 20px;
+}
+.product-container {
+    display: inline-block; /* Aligne les conteneurs en ligne si vous avez plusieurs produits */
+    text-align: center; /* Centre la description sous le produit */
+    margin-bottom: 30px; /* Ajoute un espace entre les produits si nécessaire */
+   
+}
+
+/* section avis*/
+
+.avis-client{
+    background-color: aliceblue;
+}
+.avis {
+    text-align: center;   
+}
+.avis h3{
+    color: rgb(220, 82, 13);
+    font-size: 26px;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 700;
+}
+.avis img{
+    width: 100px;
+    height: auto;
+    border-radius: 50px;
+    margin: 10px 0;
+}
+.avis p{
+    color:rgb(127, 74, 36);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.avis h2{
+    font-size: 22px;
+    color: rgb(73, 54, 35);
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 2px;
+}
+
+.revue .box-container{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 10px;
+}
+.revue .box-container .box{
+    flex: 1 1 30rem;
+    box-shadow: 0 .5rem 1.5rem rgb(0, 0, 0,.1);
+    border-radius: 5rem;
+    padding: 3rem 2rem;
+    position: relative;
+    border:0.5rem solid rgb(0, 0, 0,.1) ;
+    display: grid;
+}
+.revue .box-container .box .bxs-quote-right{
+    position:absolute ;
+    bottom: 3rem;
+    right: 3rem;
+    font-size: 6rem;
+    color: #eee;
+}
+.revue .box-container .box .stars i{
+    color:rgb(234, 170, 7) ;
+    font-size: 2rem;
+}
+.revue .box-container .box p{
+    color:rgb(127, 74, 36);
+    font-size: 1.5rem;
+    line-height:1.5 ;
+    padding-top:2rem ;
+}
+.revue .box-container .box .user{
+    display: grid;
+    align-items: center;
+    padding-top: 2rem; 
+}
+.revue .box-container .box .user img{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+.revue .box-container .box .user h3{
+    font-size: 15px;
+    color: #54370a;
+}
+.revue .box-container .box .user span{
+    font-size:10px;
+    color: #915a09;
+}
+
+/* Styles de base pour le formulaire de livraison */
+/* Styles de base pour la page de formulaire */
+.form-page {
+    background-color: #c2c2d9;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Aligne les éléments verticalement */
+}
+
+.form-page h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2b2020;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid #e16500;
+   
+    border-radius: 5px;
+}
+
+.form-livraison {
+    max-width: 600px;
+    padding: 20px;
+    background-color: #2b2020;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+
+}
+
+/* Titre du formulaire */
+.form-livraison h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Étiquettes du formulaire */
+.form-livraison label {
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #e16500; /* Assortir la couleur du texte aux accents du site */
+}
+
+/* Champs du formulaire */
+.form-livraison input[type="text"],
+.form-livraison input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+}
+
+/* Boutons du formulaire */
+.form-livraison button {
+    padding: 10px 15px;
+    background-color: #007bff; /* Couleur de fond des boutons */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.form-livraison button:hover {
+    background-color: #0056b3; /* Couleur de fond des boutons au survol */
+}
+
+/* Styles CSS améliorés pour le tableau des commandes */
+.mot{
+    color: #333;
+    font-size: 1.8rem; /* Taille de police pour le sous-titre */
+    border-bottom: 2px solid #e16500; /* Ligne sous le sous-titre */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+.table-commande-container {
+    width: 100%;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    -webkit-overflow-scrolling: touch; /* Pour une meilleure expérience sur les appareils tactiles */
+    padding: 0 10px;
+    box-sizing: border-box; 
+}
+.table-commandes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.table-commandes, .table-commandes th, .table-commandes td {
+    border: 1px solid #ddd;
+}
+
+.table-commandes th, .table-commandes td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1.6rem;
+}
+
+.table-commandes th {
+    background-color: #343a40;
+    color: #fff;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.table-commandes tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-commandes tr:hover {
+    background-color: #eaeaea;
+}
+
+.table-commandes td span {
+    color: green;
+    font-weight: bold;
+}
+
+.table-commandes .btn-livrer {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.table-commandes .btn-livrer:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.table-commandes .btn-action-link {
+    text-decoration: none;
+}
+
+.table-commandes .btn-action {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.table-commandes .btn-action:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+
+/* Styles responsive */
+@media (max-width: 768px) {
+    .table-commandes th, .table-commandes td {
+        font-size: 1.4rem; 
+        padding: 10px; 
+    }
+
+    .btn-livrer {
+        padding: 6px 12px; 
+        font-size: 1.2rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .table-commandes th, .table-commandes td {
+        font-size: 1.2rem; 
+        padding: 8px; 
+    }
+
+    .btn-livrer {
+        padding: 4px 8px; 
+        font-size: 1rem; 
+    }
+}
+
+.main{
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+/* Styles généraux pour les produits */
+.produits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.produit {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: calc(33.333% - 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.produit img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.produit h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.produit p {
+    margin: 5px 0;
+    font-size: 1.3rem;
+    color: #555;
+}
+
+.produit .prix {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+.produit .categorie, .produit .date-ajout {
+    color: #666;
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1rem;
+}
+
+.btn-modifier {
+    background-color: #007bff;
+}
+
+.btn-modifier:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-supprimer {
+    background-color: #dc3545;
+}
+
+.btn-supprimer:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Styles pour le formulaire */
+.mains {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #d25305;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: #963c08;
+    transform: scale(1.05);
+}
+
+/* Styles pour les alertes */
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert.success {
+    background-color: #28a745;
+}
+
+.alert.error {
+    background-color: #dc3545;
+}
+
+form label[for="categorie"] {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+
+form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 1.2rem;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+form select:hover,
+form select:focus {
+    border-color: #d25305;
+    box-shadow: 0 2px 4px rgba(203, 97, 4, 0.2);
+    outline: none;
+}
+
+
+form select option {
+    padding: 10px;
+}
+
+/* Styles responsive */
+@media (max-width: 768px) {
+    .produit {
+        width: calc(50% - 20px);
+    }
+
+    .mains {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .produit {
+        width: calc(100% - 20px);
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    form button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+/*résumé des ventes*/
+.container-summary {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.summary {
+    font-size: 1.5rem;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn-refresh {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn-refresh:hover {
+    background-color: #218838;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(33.333% - 40px);
+    max-width: 300px;
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    font-size: 1.9rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.4rem;
+    color: #666;
+    margin: 5px 0;
+    
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
